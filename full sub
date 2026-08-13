@@ -1,0 +1,52 @@
+//Behaviour 
+
+    
+module full_sub (A,B,C,D,Bo);
+      input A,B,C;
+      output reg D,Bo; 
+      
+  always@(*)
+    begin
+      D= A ^ B ^ C;
+      Bo= (~A & B)|(~A & C)|(C & B);
+    end
+    endmodule
+
+//Dataflow
+    
+module full_sub (A,B,C,D,Bo);
+      input A,B,C;
+      output D,Bo; 
+      
+  
+     assign D= A ^ B ^ C;
+     assign Bo= (~A & B)|(~A & C)|(C & B);
+    
+    endmodule
+
+    
+// structural
+module full_sub (A,B,C,D,Bo);
+
+      input A,B,C;
+
+      output D,Bo;    
+
+ wire w1,w2,w3,w4,w5;
+
+  xor G1(D,A,B,C);
+
+  not G2(w1,A);
+
+  and G3(w3,w1,B);
+
+  and G4(w4,B,C);
+
+  not G7 (w2,A);
+
+  and G5 (w5,w2,C);
+
+  or G6(Bo,w3,w4,w5);
+
+endmodule 
+

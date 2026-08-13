@@ -1,0 +1,25 @@
+module full_sub (A,B,C,D,Bo);
+
+  input A,B,C;
+  output D,Bo; 
+  wire w1,w3,w5;
+
+  half_sub HS1(.a(A),.b(B),.d(w1),.bo(w3));
+  half_sub HS2(.a(w1),.b(C),.d(D),.bo(w5));
+  
+  or g3(Bo,w3,w5);
+endmodule
+
+  module half_sub (a,b,d,bo);
+      input a,b;
+      output d,bo; 
+      
+       assign d= a ^ b;
+      assign bo= ~a & b;
+     
+    endmodule
+  
+  
+
+
+ 

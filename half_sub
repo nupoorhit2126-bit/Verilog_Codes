@@ -1,0 +1,22 @@
+//Dataflow
+module half_sub (A,B,D,Bo);
+      input A,B;
+      output D,Bo; 
+      
+       assign D= A ^ B;
+      assign Bo= ~A & B;
+     
+    endmodule
+
+//Behaviour 
+module half_sub (A,B,D,Bo);
+      input A,B;
+      output reg D,Bo; 
+      
+  always@(*)
+    begin
+      D= A ^ B;
+     Bo= ~A & B;
+    end
+    endmodule
+
